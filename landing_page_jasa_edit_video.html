@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Edit Video & Desain - Selzz</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            turquoise: '#40E0D0',
+                            pirus: '#00CED1',
+                            deepTeal: '#008B8B',
+                            dark: '#06131A',
+                            card: '#0C1E26',
+                            cardBorder: '#142E3B'
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'gradient-x': 'gradient-x 8s ease infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-turquoise {
+            box-shadow: 0 0 25px -5px rgba(64, 224, 208, 0.4);
+        }
+        .glow-pirus {
+            box-shadow: 0 0 25px -5px rgba(0, 206, 209, 0.4);
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(64, 224, 208, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .logo-img {
+            filter: brightness(1.2) contrast(1.2) drop-shadow(0 0 8px rgba(64, 224, 208, 0.8));
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans antialiased overflow-x-hidden">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-brand-dark/85 backdrop-blur-md border-b border-brand-cardBorder transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-turquoise/20 to-brand-pirus/40 border border-brand-turquoise/40 flex items-center justify-center p-2 shadow-[0_0_15px_rgba(64,224,208,0.3)] group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-video text-brand-turquoise text-xl"></i>
+                    </div>
+                    <span class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight text-white uppercase">
+                        SELZZ <span class="text-brand-turquoise">|| EDIT VIDEO</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                    <a href="#home" class="hover:text-brand-turquoise transition-colors">Home</a>
+                    <a href="#fitur" class="hover:text-brand-turquoise transition-colors">Keunggulan</a>
+                    <a href="#harga" class="hover:text-brand-turquoise transition-colors">Daftar Harga</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center">
+                    <a href="#harga" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-full group bg-gradient-to-br from-brand-turquoise to-brand-pirus group-hover:from-brand-turquoise group-hover:to-brand-pirus hover:text-white text-white focus:outline-none glow-turquoise">
+                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-brand-dark rounded-full group-hover:bg-opacity-0 flex items-center gap-2">
+                            <i class="fa-solid fa-cart-shopping text-brand-turquoise group-hover:text-white transition-colors"></i>
+                            <span>Pesan Layanan</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" aria-label="Toggle Navigation Menu" class="text-slate-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="md:hidden hidden bg-brand-card/95 border-b border-brand-cardBorder backdrop-blur-xl px-4 pt-2 pb-6 space-y-3" id="mobile-menu">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">Home</a>
+            <a href="#fitur" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">Keunggulan</a>
+            <a href="#harga" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-200 hover:bg-slate-800">Daftar Harga</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative pt-32 pb-16 md:pt-44 md:pb-24 overflow-hidden bg-grid-pattern">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-turquoise/15 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-card/90 border border-brand-turquoise/40 mb-6 backdrop-blur-md">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-turquoise opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-turquoise"></span>
+                </span>
+                <span class="text-xs font-semibold text-slate-300 tracking-wide uppercase">Pengerjaan Cepat & Hasil Berkualitas</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-heading font-extrabold text-white tracking-tight leading-[1.15] max-w-4xl mx-auto uppercase">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-turquoise via-teal-300 to-brand-pirus animate-gradient-x">
+                    JASA EDIT VIDEO & DESAIN
+                </span>
+            </h1>
+
+            <p class="mt-6 text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
+                Jasa editing video & desain kreatif terlengkap oleh Selzz. Pilih layanan di bawah ini untuk langsung terhubung ke sistem pemesanan via WhatsApp.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#harga" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-turquoise to-brand-pirus hover:opacity-95 text-slate-950 font-extrabold text-lg shadow-xl glow-turquoise flex items-center justify-center gap-3 transition-all hover:scale-[1.02]">
+                    <i class="fa-solid fa-tags"></i>
+                    <span>Lihat Pricelist & Pesan</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEUNGGULAN SECTION -->
+    <section id="fitur" class="py-12 bg-brand-dark/50 border-y border-brand-cardBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="p-6 rounded-2xl bg-brand-card/40 border border-brand-cardBorder">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-brand-turquoise/10 text-brand-turquoise flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-white mb-2">Proses Cepat</h3>
+                    <p class="text-xs text-slate-400">Pengerjaan kilat & tepat waktu sesuai kebutuhan event atau deadline tugas Anda.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-brand-card/40 border border-brand-cardBorder">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-brand-turquoise/10 text-brand-turquoise flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-white mb-2">Hasil Premium</h3>
+                    <p class="text-xs text-slate-400">Efek smooth, transisi presisi, resolusi tinggi hingga HD/4K 60FPS.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-brand-card/40 border border-brand-cardBorder">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-brand-turquoise/10 text-brand-turquoise flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-white mb-2">Harga Terjangkau</h3>
+                    <p class="text-xs text-slate-400">Tarif ramah kantong pelajar, mahasiswa, maupun kebutuhan UMKM.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAKET HARGA (PRICELIST) -->
+    <section id="harga" class="py-16 bg-slate-950/60 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-xs font-semibold uppercase tracking-wider text-brand-turquoise mb-2">Daftar Harga Kategori</h2>
+                <h3 class="text-3xl sm:text-5xl font-heading font-bold text-white">Pilih Layanan Anda</h3>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">Klik tombol <span class="text-brand-turquoise font-semibold">"Pesan Sekarang"</span> pada layanan yang diinginkan untuk mengisi form pesanan.</p>
+            </div>
+
+            <!-- Grid 5 List Harga Spesifik -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Item 1: Logo -->
+                <div class="bg-brand-card p-6 rounded-3xl border border-brand-cardBorder flex flex-col justify-between hover:border-brand-turquoise transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-turquoise/10 border border-brand-turquoise/30 text-brand-turquoise flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-shapes"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-1">Logo</h4>
+                        <p class="text-xs text-slate-400 mb-4">Desain logo squad, OLShop, avatar, atau branding personal.</p>
+                        <div class="mb-6">
+                            <span class="text-xs text-slate-400 font-medium">Rp</span>
+                            <span class="text-3xl font-heading font-extrabold text-white">10.000</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-brand-cardBorder pt-4 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> File HD PNG & JPG</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Transparan Background</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> 2x Revisi</li>
+                        </ul>
+                    </div>
+                    <button onclick="openPaymentModal('Logo', 10000)" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-turquoise to-brand-pirus hover:opacity-90 text-slate-950 font-bold text-xs tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2">
+                        <span>Pesan Sekarang</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Item 2: Jedag Jedug -->
+                <div class="bg-brand-card p-6 rounded-3xl border border-brand-turquoise relative flex flex-col justify-between glow-turquoise hover:-translate-y-1 transition-all duration-300">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-turquoise to-brand-pirus text-slate-950 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                        POPULER
+                    </div>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-turquoise/20 border border-brand-turquoise/40 text-brand-turquoise flex items-center justify-center text-xl mb-4 mt-1">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-1">Jedag Jedug</h4>
+                        <p class="text-xs text-slate-400 mb-4">Editing JJ khas TikTok / Reels, shake pas beat, efek sound memukau.</p>
+                        <div class="mb-6">
+                            <span class="text-xs text-slate-400 font-medium">Rp</span>
+                            <span class="text-3xl font-heading font-extrabold text-white">15.000</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-brand-cardBorder pt-4 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Fit Sound Beat Sync</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Smooth Shake & Transition</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> 60 FPS Full HD</li>
+                        </ul>
+                    </div>
+                    <button onclick="openPaymentModal('Jedag Jedug', 15000)" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-turquoise to-teal-400 hover:opacity-90 text-slate-950 font-bold text-xs tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2">
+                        <span>Pesan Sekarang</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Item 3: Bikin Preset -->
+                <div class="bg-brand-card p-6 rounded-3xl border border-brand-cardBorder flex flex-col justify-between hover:border-brand-turquoise transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-turquoise/10 border border-brand-turquoise/30 text-brand-turquoise flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-1">Bikin Preset</h4>
+                        <p class="text-xs text-slate-400 mb-4">Pembuatan file preset khusus Alight Motion (AM) atau CapCut custom.</p>
+                        <div class="mb-6">
+                            <span class="text-xs text-slate-400 font-medium">Rp</span>
+                            <span class="text-3xl font-heading font-extrabold text-white">10.000</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-brand-cardBorder pt-4 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> File Link XML / QR Preset</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Custom Color & Effect</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> BISA DI-REUSE</li>
+                        </ul>
+                    </div>
+                    <button onclick="openPaymentModal('Bikin Preset', 10000)" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-turquoise to-brand-pirus hover:opacity-90 text-slate-950 font-bold text-xs tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2">
+                        <span>Pesan Sekarang</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Item 4: Tugas Video -->
+                <div class="bg-brand-card p-6 rounded-3xl border border-brand-cardBorder flex flex-col justify-between hover:border-brand-turquoise transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-turquoise/10 border border-brand-turquoise/30 text-brand-turquoise flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-1">Tugas Video</h4>
+                        <p class="text-xs text-slate-400 mb-4">Editing video tugas sekolah/kuliah, presentasi, atau drama pendek.</p>
+                        <div class="mb-6">
+                            <span class="text-xs text-slate-400 font-medium">Rp</span>
+                            <span class="text-3xl font-heading font-extrabold text-white">40.000</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-brand-cardBorder pt-4 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Durasi Bebas (Hingga 10m)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Subtitle & Teks Penjelas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Pengerjaan Kilat & Rapi</li>
+                        </ul>
+                    </div>
+                    <button onclick="openPaymentModal('Tugas Video', 40000)" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-turquoise to-brand-pirus hover:opacity-90 text-slate-950 font-bold text-xs tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2">
+                        <span>Pesan Sekarang</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Item 5: Design -->
+                <div class="bg-brand-card p-6 rounded-3xl border border-brand-cardBorder flex flex-col justify-between hover:border-brand-turquoise transition-all duration-300 hover:-translate-y-1">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-brand-turquoise/10 border border-brand-turquoise/30 text-brand-turquoise flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h4 class="text-xl font-heading font-bold text-white mb-1">Design</h4>
+                        <p class="text-xs text-slate-400 mb-4">Desain Pamflet, Poster, Feed Instagram, Banner, atau Thumbnail.</p>
+                        <div class="mb-6">
+                            <span class="text-xs text-slate-400 font-medium">Rp</span>
+                            <span class="text-3xl font-heading font-extrabold text-white">20.000</span>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-brand-cardBorder pt-4 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Bebas Pilih Ukuran</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Format File Siap Cetak/Post</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-turquoise"></i> Estetik & Modern</li>
+                        </ul>
+                    </div>
+                    <button onclick="openPaymentModal('Design', 20000)" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-turquoise to-brand-pirus hover:opacity-90 text-slate-950 font-bold text-xs tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2">
+                        <span>Pesan Sekarang</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-brand-cardBorder py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 Selzz Edit Video. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE PAYMENT MODAL / MENU PEMBAYARAN -->
+    <div id="payment-modal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="relative w-full max-w-lg bg-brand-card rounded-3xl border border-brand-cardBorder shadow-2xl my-8 overflow-hidden">
+            <!-- Alert Banner Validation -->
+            <div id="modal-alert" class="hidden bg-rose-500/20 border-b border-rose-500/30 px-6 py-2.5 text-rose-300 text-xs text-center font-medium">
+                <i class="fa-solid fa-circle-exclamation mr-1.5"></i> Mohon lengkapi Nama dan Nomor WhatsApp Anda.
+            </div>
+
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-brand-cardBorder flex items-center justify-between bg-slate-900/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-brand-turquoise/20 text-brand-turquoise flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-heading font-bold text-white text-lg">Form Pemesanan</h4>
+                        <p class="text-xs text-slate-400">Isi data pemesan untuk kirim ke WhatsApp</p>
+                    </div>
+                </div>
+                <button onclick="closePaymentModal()" aria-label="Tutup Form Pemesanan" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content (Form Only) -->
+            <div class="p-6 space-y-6 max-h-[75vh] overflow-y-auto">
+                <!-- Ringkasan Layanan -->
+                <div class="bg-slate-900/80 border border-brand-cardBorder p-4 rounded-2xl flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-slate-400 uppercase font-semibold">Layanan Dipilih:</span>
+                        <h5 id="selected-service-name" class="text-xl font-heading font-bold text-white mt-0.5">Logo</h5>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400 uppercase font-semibold">Harga:</span>
+                        <div id="selected-service-price" class="text-xl font-heading font-extrabold text-brand-turquoise mt-0.5">Rp 10.000</div>
+                    </div>
+                </div>
+
+                <!-- Form Data Pemesan -->
+                <div class="space-y-4">
+                    <h5 class="text-sm font-semibold text-slate-300 flex items-center gap-2">
+                        <i class="fa-solid fa-user text-brand-turquoise"></i> Data Pemesan
+                    </h5>
+                    <div class="space-y-3">
+                        <div>
+                            <label for="cust-name" class="block text-xs font-medium text-slate-400 mb-1">Nama Pemesan / Olshop *</label>
+                            <input type="text" id="cust-name" placeholder="Contoh: Budi Pratama" class="w-full bg-slate-900 border border-brand-cardBorder rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-turquoise transition-colors">
+                        </div>
+                        <div>
+                            <label for="cust-phone" class="block text-xs font-medium text-slate-400 mb-1">Nomor WhatsApp *</label>
+                            <input type="tel" id="cust-phone" placeholder="083178726924" class="w-full bg-slate-900 border border-brand-cardBorder rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-turquoise transition-colors">
+                        </div>
+                        <div>
+                            <label for="cust-notes" class="block text-xs font-medium text-slate-400 mb-1">Catatan / Brief Edit (Opsional)</label>
+                            <textarea id="cust-notes" rows="3" placeholder="Tulis deskripsi konsep / link mentahan Google Drive di sini..." class="w-full bg-slate-900 border border-brand-cardBorder rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-turquoise transition-colors"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer / Action Button -->
+            <div class="p-6 border-t border-brand-cardBorder bg-slate-900/50">
+                <button onclick="submitOrderToWhatsApp()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-base shadow-xl flex items-center justify-center gap-3 transition-all hover:scale-[1.01]">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    <span>Kirim Pesanan ke WhatsApp</span>
+                </button>
+                <p class="text-[11px] text-slate-400 text-center mt-2">Format pesan otomatis dikirim langsung ke WhatsApp SELZZ (083178726924).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let currentService = { name: '', price: 0, formattedPrice: '' };
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if(mobileMenu.classList.contains('hidden')){
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        function openPaymentModal(serviceName, price) {
+            currentService.name = serviceName;
+            currentService.price = price;
+            currentService.formattedPrice = 'Rp ' + price.toLocaleString('id-ID');
+
+            document.getElementById('selected-service-name').innerText = currentService.name;
+            document.getElementById('selected-service-price').innerText = currentService.formattedPrice;
+
+            document.getElementById('modal-alert').classList.add('hidden');
+            document.getElementById('payment-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('payment-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function submitOrderToWhatsApp() {
+            const nameInput = document.getElementById('cust-name');
+            const phoneInput = document.getElementById('cust-phone');
+            const notesInput = document.getElementById('cust-notes');
+
+            const name = nameInput.value.trim();
+            const phone = phoneInput.value.trim();
+            const notes = notesInput.value.trim();
+
+            if (!name || !phone) {
+                alertValidation();
+                return;
+            }
+
+            const adminPhone = "6283178726924";
+
+            let message = `Halo Admin Selzz Edit Video, saya ingin memesan layanan:\n\n`;
+            message += `📌 *DETAIL PESANAN*\n`;
+            message += `• Layanan: *${currentService.name}*\n`;
+            message += `• Total Tagihan: *${currentService.formattedPrice}*\n\n`;
+            message += `👤 *DATA PEMESAN*\n`;
+            message += `• Nama: ${name}\n`;
+            message += `• No. WA: ${phone}\n`;
+            if (notes) {
+                message += `• Catatan/Bahan: ${notes}\n`;
+            }
+            message += `\nMohon diproses ya, terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${adminPhone}?text=${encodedMessage}`, '_blank');
+        }
+
+        function alertValidation() {
+            const alertBox = document.getElementById('modal-alert');
+            const nameInput = document.getElementById('cust-name');
+            const phoneInput = document.getElementById('cust-phone');
+
+            alertBox.classList.remove('hidden');
+
+            if (!nameInput.value) nameInput.classList.add('border-rose-500');
+            if (!phoneInput.value) phoneInput.classList.add('border-rose-500');
+
+            setTimeout(() => {
+                nameInput.classList.remove('border-rose-500');
+                phoneInput.classList.remove('border-rose-500');
+            }, 3000);
+        }
+
+        document.getElementById('payment-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('payment-modal')) {
+                closePaymentModal();
+            }
+        });
+    </script>
+</body>
+</html>
